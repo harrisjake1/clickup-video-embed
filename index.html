@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <title>Mux Video Player</title>
-    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
     <style>
         body {
             margin: 0;
@@ -29,20 +28,9 @@
 <body>
 
     <!-- Mux Player will be injected here -->
-    <mux-player id="muxPlayer" stream-type="on-demand" controls></mux-player>
 
-    <script>
-        // Get playback_id from the URL (e.g., ?playback_id=abc123)
-        const urlParams = new URLSearchParams(window.location.search);
-        const playbackId = urlParams.get('playback_id');
+    <video controls width="100%" src="https://stream.mux.com/oTJHocIvspnvshj02mie1REwB1kkXRt8uzZRfyQlsGkA.m3u8"></video>
 
-        // If found, set it on the mux-player
-        if (playbackId) {
-            document.getElementById('muxPlayer').setAttribute('playback-id', playbackId);
-        } else {
-            document.body.innerHTML = "<h2 style='text-align:center;'>No playback_id provided in the URL</h2>";
-        }
-    </script>
 
 </body>
 
