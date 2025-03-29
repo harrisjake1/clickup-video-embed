@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Mux Video Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: #f9f9f9;
+        }
+
+        mux-player {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mux Player will be injected here -->
+    <mux-player id="muxPlayer" stream-type="on-demand" controls></mux-player>
+
+    <script>
+        // Get playback_id from the URL (e.g., ?playback_id=abc123)
+        const urlParams = new URLSearchParams(window.location.search);
+        const playbackId = urlParams.get('playback_id');
+
+        // If found, set it on the mux-player
+        if (playbackId) {
+            document.getElementById('muxPlayer').setAttribute('playback-id', playbackId);
+        } else {
+            document.body.innerHTML = "<h2 style='text-align:center;'>No playback_id provided in the URL</h2>";
+        }
+    </script>
+
+</body>
+
+</html>
